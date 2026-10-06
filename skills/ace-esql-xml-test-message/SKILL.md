@@ -15,7 +15,8 @@ The primary goal is not merely to produce syntactically valid XML. The goal is t
 2. The required ACE message-tree path
 3. The corresponding XML structure
 4. A complete test message suitable for sending to the flow's MQ input
-5. The expected result after the statement executes
+5. The MQ Input queue name that the message needs to be sent to
+6. The expected result after the statement executes
 
 # Instructions
 1. When this skill is triggered, ask the user which .esql file holds the ESQL code.
@@ -206,6 +207,8 @@ Do not assume the MQ payload arrives unchanged at the target Compute/Route node.
 When relevant, explain:
 
 ```text
+MQ input queue
+    ↓
 MQ message
     ↓
 MQInput parser
@@ -219,9 +222,9 @@ target ESQL statement
 
 The test XML should represent the message entering the flow, not necessarily the exact tree immediately before the target statement, unless the user explicitly asks for the latter.
 
-### 10. Produce a minimal test message first
+### 10. Produce a minimal test message and the MQ input queue first
 
-Prefer a minimal XML payload that contains only the elements needed to exercise the target statement.
+Prefer a minimal XML payload that contains only the elements needed to exercise the target statement and the MQ input queue the message would be sent to.
 
 Then optionally provide a more realistic example if useful.
 
